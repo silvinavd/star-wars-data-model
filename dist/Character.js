@@ -26,7 +26,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 exports.__esModule = true;
 exports.Character = void 0;
 var typeorm_1 = require("typeorm");
-// import {Planet} from "./Planet"
 var Character = /** @class */ (function (_super) {
     __extends(Character, _super);
     function Character() {
@@ -35,7 +34,7 @@ var Character = /** @class */ (function (_super) {
     __decorate([
         typeorm_1.PrimaryGeneratedColumn(),
         __metadata("design:type", Number)
-    ], Character.prototype, "id");
+    ], Character.prototype, "characterId");
     __decorate([
         typeorm_1.Column(),
         __metadata("design:type", String)

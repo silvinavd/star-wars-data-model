@@ -26,20 +26,36 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 exports.__esModule = true;
 exports.Favourite = void 0;
 var typeorm_1 = require("typeorm");
-// import {Planet} from "./Planet"
+var User_1 = require("./User");
+var Planet_1 = require("./Planet");
 var Favourite = /** @class */ (function (_super) {
     __extends(Favourite, _super);
     function Favourite() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
+    ;
     __decorate([
         typeorm_1.PrimaryGeneratedColumn(),
         __metadata("design:type", Number)
-    ], Favourite.prototype, "id");
+    ], Favourite.prototype, "favouriteId");
     __decorate([
         typeorm_1.Column(),
         __metadata("design:type", String)
-    ], Favourite.prototype, "name");
+    ], Favourite.prototype, "planetId");
+    __decorate([
+        typeorm_1.Column(),
+        __metadata("design:type", String)
+    ], Favourite.prototype, "characterId");
+    __decorate([
+        typeorm_1.OneToOne(function () { return User_1.User; }, function (user) { return user.favourite; }),
+        typeorm_1.JoinColumn(),
+        __metadata("design:type", User_1.User)
+    ], Favourite.prototype, "user");
+    __decorate([
+        typeorm_1.ManyToMany(function () { return Planet_1.Planet; }, function (planet) { return planet.planetId; }),
+        typeorm_1.JoinTable(),
+        __metadata("design:type", Array)
+    ], Favourite.prototype, "planet");
     Favourite = __decorate([
         typeorm_1.Entity()
     ], Favourite);

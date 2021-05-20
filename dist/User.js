@@ -26,7 +26,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 exports.__esModule = true;
 exports.User = void 0;
 var typeorm_1 = require("typeorm");
-// import {Planet} from "./Planet"
+var Favourite_1 = require("./Favourite");
 var User = /** @class */ (function (_super) {
     __extends(User, _super);
     function User() {
@@ -35,7 +35,7 @@ var User = /** @class */ (function (_super) {
     __decorate([
         typeorm_1.PrimaryGeneratedColumn(),
         __metadata("design:type", Number)
-    ], User.prototype, "id");
+    ], User.prototype, "Id");
     __decorate([
         typeorm_1.Column(),
         __metadata("design:type", String)
@@ -52,6 +52,11 @@ var User = /** @class */ (function (_super) {
         typeorm_1.Column({ unique: true }),
         __metadata("design:type", String)
     ], User.prototype, "password");
+    __decorate([
+        typeorm_1.OneToOne(function () { return Favourite_1.Favourite; }, function (favourite) { return favourite.user; }) // specify inverse side as a second parameter
+        ,
+        __metadata("design:type", Favourite_1.Favourite)
+    ], User.prototype, "favourite");
     User = __decorate([
         typeorm_1.Entity()
     ], User);

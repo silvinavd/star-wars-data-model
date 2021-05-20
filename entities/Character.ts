@@ -3,11 +3,14 @@ import {
     BaseEntity, JoinTable
 } from 'typeorm';
 
-// import {Planet} from "./Planet"
+import {Favourite} from "./Favourite";
+import {User} from "./User";
+
+
 @Entity()
 export class Character extends BaseEntity {
     @PrimaryGeneratedColumn()
-    id: number;
+    characterId: number;
 
     @Column()
     name: string;
@@ -30,5 +33,6 @@ export class Character extends BaseEntity {
     // @ManyToMany(() => Planet)
     // @JoinTable()
     // characters: Character[];
+
 
 }
