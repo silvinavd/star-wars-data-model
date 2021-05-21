@@ -26,7 +26,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 exports.__esModule = true;
 exports.Planet = void 0;
 var typeorm_1 = require("typeorm");
-var Favourite_1 = require("./Favourite");
 // import {Planet} from "./Planet"
 var Planet = /** @class */ (function (_super) {
     __extends(Planet, _super);
@@ -36,7 +35,7 @@ var Planet = /** @class */ (function (_super) {
     __decorate([
         typeorm_1.PrimaryGeneratedColumn(),
         __metadata("design:type", Number)
-    ], Planet.prototype, "planetId");
+    ], Planet.prototype, "id");
     __decorate([
         typeorm_1.Column(),
         __metadata("design:type", String)
@@ -61,10 +60,6 @@ var Planet = /** @class */ (function (_super) {
         typeorm_1.Column(),
         __metadata("design:type", String)
     ], Planet.prototype, "gravity");
-    __decorate([
-        typeorm_1.ManyToMany(function () { return Favourite_1.Favourite; }, function (favourite) { return favourite.planet; }),
-        __metadata("design:type", Array)
-    ], Planet.prototype, "planet");
     Planet = __decorate([
         typeorm_1.Entity()
     ], Planet);

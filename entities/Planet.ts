@@ -12,7 +12,7 @@ import {
   @Entity()
   export class Planet extends BaseEntity{
     @PrimaryGeneratedColumn()
-    planetId: number;
+    id: number;
   
     @Column()
     name: string;    
@@ -31,12 +31,6 @@ import {
 
     @Column()
     gravity: string;
-  
-    // @ManyToMany(() => Planet)
-    // @JoinTable()
-    // planets: Planet[];
 
-    @ManyToMany(() => Favourite, favourite => favourite.planet)
-    planet: Planet[];
     
   }

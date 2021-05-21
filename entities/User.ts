@@ -1,5 +1,5 @@
 import {
-    Entity, Column, PrimaryGeneratedColumn, ManyToMany, OneToOne,
+    Entity, Column, PrimaryGeneratedColumn, OneToMany, OneToOne,
     BaseEntity, JoinTable
   } from 'typeorm';
   
@@ -7,7 +7,7 @@ import {
   @Entity()
   export class User extends BaseEntity{
     @PrimaryGeneratedColumn()
-    Id: number;
+    id: number;
   
     @Column()
     first_name: string;
@@ -21,11 +21,7 @@ import {
     @Column({unique: true})
     password: string;
   
-    //  @ManyToMany(() => Planet)
-    //  @JoinTable()
-    //  planets: Planet[];
-
-    @OneToOne(() => Favourite, favourite => favourite.user) // specify inverse side as a second parameter
-    favourite: Favourite;
+   @OneToMany(() => Favourite, favourite => favourite.userId)
+    favourite: Favourite[];
     
   }

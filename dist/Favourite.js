@@ -27,13 +27,13 @@ exports.__esModule = true;
 exports.Favourite = void 0;
 var typeorm_1 = require("typeorm");
 var User_1 = require("./User");
+var Character_1 = require("./Character");
 var Planet_1 = require("./Planet");
 var Favourite = /** @class */ (function (_super) {
     __extends(Favourite, _super);
     function Favourite() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
-    ;
     __decorate([
         typeorm_1.PrimaryGeneratedColumn(),
         __metadata("design:type", Number)
@@ -41,21 +41,21 @@ var Favourite = /** @class */ (function (_super) {
     __decorate([
         typeorm_1.Column(),
         __metadata("design:type", String)
-    ], Favourite.prototype, "planetId");
+    ], Favourite.prototype, "userId");
     __decorate([
-        typeorm_1.Column(),
-        __metadata("design:type", String)
-    ], Favourite.prototype, "characterId");
-    __decorate([
-        typeorm_1.OneToOne(function () { return User_1.User; }, function (user) { return user.favourite; }),
-        typeorm_1.JoinColumn(),
+        typeorm_1.ManyToOne(function () { return User_1.User; }, function (user) { return user.favourite; }),
         __metadata("design:type", User_1.User)
     ], Favourite.prototype, "user");
     __decorate([
-        typeorm_1.ManyToMany(function () { return Planet_1.Planet; }, function (planet) { return planet.planetId; }),
-        typeorm_1.JoinTable(),
-        __metadata("design:type", Array)
+        typeorm_1.OneToOne(function () { return Planet_1.Planet; }),
+        typeorm_1.JoinColumn(),
+        __metadata("design:type", Planet_1.Planet)
     ], Favourite.prototype, "planet");
+    __decorate([
+        typeorm_1.OneToOne(function () { return Character_1.Character; }),
+        typeorm_1.JoinColumn(),
+        __metadata("design:type", Character_1.Character)
+    ], Favourite.prototype, "character");
     Favourite = __decorate([
         typeorm_1.Entity()
     ], Favourite);

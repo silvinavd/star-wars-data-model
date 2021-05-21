@@ -10,7 +10,7 @@ import {User} from "./User";
 @Entity()
 export class Character extends BaseEntity {
     @PrimaryGeneratedColumn()
-    characterId: number;
+    id: number;
 
     @Column()
     name: string;

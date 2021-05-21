@@ -1,5 +1,5 @@
 import {
-    Entity, Column, PrimaryGeneratedColumn, ManyToMany, OneToOne, JoinColumn,
+    Entity, Column, PrimaryGeneratedColumn, OneToOne, ManyToOne, JoinColumn,
     BaseEntity, JoinTable
 } from 'typeorm';
 
@@ -14,18 +14,16 @@ export class Favourite extends BaseEntity {
     favouriteId: number;
 
     @Column()
-    planetId: string;
+    userId: string;
 
-    @Column()
-    characterId: string;
-;
-    @OneToOne(() => User, user => user.favourite)
-    @JoinColumn()
+    @ManyToOne(() => User, user => user.favourite)
     user: User;
 
-     @ManyToMany(() => Planet, planet => planet.planetId)
-         @JoinTable()
+    @OneToOne(() => Planet)
+    @JoinColumn()
+    planet: Planet;
 
-    planet: Planet[];
-
+    @OneToOne(() => Character)
+    @JoinColumn()
+    character: Character;
 }

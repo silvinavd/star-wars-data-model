@@ -35,7 +35,7 @@ var User = /** @class */ (function (_super) {
     __decorate([
         typeorm_1.PrimaryGeneratedColumn(),
         __metadata("design:type", Number)
-    ], User.prototype, "Id");
+    ], User.prototype, "id");
     __decorate([
         typeorm_1.Column(),
         __metadata("design:type", String)
@@ -53,9 +53,8 @@ var User = /** @class */ (function (_super) {
         __metadata("design:type", String)
     ], User.prototype, "password");
     __decorate([
-        typeorm_1.OneToOne(function () { return Favourite_1.Favourite; }, function (favourite) { return favourite.user; }) // specify inverse side as a second parameter
-        ,
-        __metadata("design:type", Favourite_1.Favourite)
+        typeorm_1.OneToMany(function () { return Favourite_1.Favourite; }, function (favourite) { return favourite.userId; }),
+        __metadata("design:type", Array)
     ], User.prototype, "favourite");
     User = __decorate([
         typeorm_1.Entity()
